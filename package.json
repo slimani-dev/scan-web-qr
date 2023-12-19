@@ -27,7 +27,7 @@
     "pack:xpi": "cross-env WEB_EXT_ARTIFACTS_DIR=./ web-ext build --source-dir ./extension --filename extension-firefox.xpi --overwrite-dest",
     "start:chromium": "web-ext run --source-dir ./extension --target=chromium",
     "start:firefox": "web-ext run --source-dir ./extension --target=firefox-desktop",
-    "clear": "rimraf --glob extension/dist extension/manifest.json extension.*",
+    "clear": "rimraf --glob extension/dist extension/manifest.json extension.* extension-*.* ",
     "lint": "eslint --cache .",
     "test": "vitest test",
     "test:e2e": "playwright test",
@@ -80,7 +80,7 @@
     "webextension-polyfill": "^0.10.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+    "pre-commit": "yarn lint-staged"
   },
   "lint-staged": {
     "*": "eslint --fix"
