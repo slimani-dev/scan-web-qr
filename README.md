@@ -8,9 +8,9 @@ A fast way to scan Qr codes on the web with taking a screenshot and get the text
 
 ## Features
 
-- ⚡️ **Instant Scan** - get the any text from any web page instantly 
-- ❌📄 No upload needed
-- ❌📷️ No Camera needed
+- ⚡️ **Instant Scan** - get the text from any Qr code on anny web page instantly 
+- 📄❌ No upload needed
+- 📷❌️ No Camera needed
 - 📋️ Copy to clipboard with one click
 - 🦾 View and edit the text before before copy
 
