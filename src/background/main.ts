@@ -1,4 +1,4 @@
-import {onMessage, sendMessage} from 'webext-bridge/background'
+import { onMessage, sendMessage } from 'webext-bridge/background'
 
 // only on dev mode
 if (import.meta.hot) {
@@ -13,10 +13,6 @@ browser.runtime.onInstalled.addListener((): void => {
   console.log('Extension installed')
 })
 
-onMessage('request-selection', async ({data: {screenshotUrl, to}}) => {
-  const res = await sendMessage('from-popup', {screenshotUrl}, {context: 'content-script', tabId: to})
-  console.log(res)
+onMessage('request-selection', ({ data: { screenshotUrl, to } }) => {
+  sendMessage('from-popup', { screenshotUrl }, { context: 'content-script', tabId: to })
 })
-
-
-

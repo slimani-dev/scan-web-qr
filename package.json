@@ -1,10 +1,10 @@
 {
-  "name": "vitesse-webext",
-  "displayName": "Vitesse WebExt",
+  "name": "scan-web-qr",
+  "displayName": "Scan Web Qr",
   "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@8.3.1",
-  "description": "[description]",
+  "description": "Scan Qr codes from the web directly with a screenshot",
   "scripts": {
     "dev": "npm run clear && cross-env NODE_ENV=development run-p dev:*",
     "dev-firefox": "npm run clear && cross-env NODE_ENV=development EXTENSION=firefox run-p dev:*",
@@ -17,10 +17,10 @@
     "build:background": "vite build --config vite.config.background.ts",
     "build:web": "vite build",
     "build:js": "vite build --config vite.config.content.ts",
-    "pack": "cross-env NODE_ENV=production run-p pack:*",
+    "pack-extention": "cross-env NODE_ENV=production run-p pack:*",
     "pack:zip": "rimraf extension.zip && jszip-cli add extension/* -o ./extension.zip",
-    "pack:crx": "crx pack extension -o ./extension.crx",
-    "pack:xpi": "cross-env WEB_EXT_ARTIFACTS_DIR=./ web-ext build --source-dir ./extension --filename extension.xpi --overwrite-dest",
+    "pack:crx": "crx pack extension -o ./extension-chrome.crx",
+    "pack:xpi": "cross-env WEB_EXT_ARTIFACTS_DIR=./ web-ext build --source-dir ./extension --filename extension-firefox.xpi --overwrite-dest",
     "start:chromium": "web-ext run --source-dir ./extension --target=chromium",
     "start:firefox": "web-ext run --source-dir ./extension --target=firefox-desktop",
     "clear": "rimraf --glob extension/dist extension/manifest.json extension.*",
@@ -29,6 +29,11 @@
     "test:e2e": "playwright test",
     "postinstall": "simple-git-hooks",
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cropperjs": "^1.6.1",
+    "qrcode-decoder": "^0.3.3",
+    "vue-cropperjs": "^5.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.36.0",
@@ -75,10 +80,5 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
-  },
-  "dependencies": {
-    "cropperjs": "^1.6.1",
-    "qrcode-decoder": "^0.3.3",
-    "vue-cropperjs": "^5.0.0"
   }
 }
